@@ -1,3 +1,4 @@
+version: '0.1'
 services:
     laravel.test:
         build:
@@ -27,6 +28,16 @@ services:
             - meilisearch
             - mailpit
             - selenium
+    paid-pwa.local:
+        image: 'mastashake08/paid-pwa-frontend:latest'
+        ports: 
+            - "${FRONTEND_APP_PORT:-80}:80"
+        environment:
+            NODE_ENV: production
+   
+        networks:
+        - sail
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
